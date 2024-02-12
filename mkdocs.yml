@@ -1,0 +1,14 @@
+site_name: pytritech
+
+theme:
+  name: "readthedocs"
+
+plugins:
+  - search
+  - mkdocstrings
+  - autorefs
+
+nav:
+  - index.md
+  - how-to-guides.md
+  - reference.md

@@ -1,0 +1,41 @@
+image: "python:3.11"
+
+before_script:
+  - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+  - which git-lfs || ( apt-get update -y && apt-get install git-lfs -y )
+  - eval $(ssh-agent -s)
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa_gitlab
+  - chmod 400 ~/.ssh/id_rsa_gitlab
+  - ssh-add ~/.ssh/id_rsa_gitlab
+  - touch ~/.ssh/known_hosts
+  - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+  - python --version
+  - pip3 install -r requirements.txt
+  - pip3 install ruff
+  - pip3 install pytest
+  - pip3 install pyinstrument
+
+stages:
+  - Static Analysis
+  - Test
+
+ruff:
+  tags:
+    - sealcops
+  stage: Static Analysis
+  script:
+  - ruff check .
+
+unit_test:
+  tags:
+    - sealcops
+    - test
+  stage: Test
+  script:
+  - pwd
+  - ls -l
+  - export PYTHONPATH="$PYTHONPATH:."
+  - python -c "import sys;print(sys.path)"
+  - pytest
