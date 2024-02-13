@@ -27,6 +27,8 @@ Once installed, you can begin to read pytritech files as follows:
 
 ## Documentation
 
+Documentation is available at [https://onidaito.github.io/pytritech/](https://onidaito.github.io/pytritech/).
+
 The documentation can be generated using mkdocs as follows:
 
     mkdocs serve
