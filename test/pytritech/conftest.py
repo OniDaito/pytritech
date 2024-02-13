@@ -11,7 +11,7 @@ def get_data():
     
     if not os.path.exists(test_data_dir):
         # Download data to test_data_dir via git
-        repo_clone_url = "https://gitlab.st-andrews.ac.uk/biology/smru/bjb8/pytritech_testdata.git"
+        repo_clone_url = "https://github.com/OniDaito/pytritech_testdata.git"
         repo = git.Repo.clone_from(repo_clone_url, test_data_dir)
         repo.git.checkout("main")
   
