@@ -1,7 +1,7 @@
 """ Time related support functions """
 
 __all__ = ["EpochGem"]
-__version__ = "0.1"
+__version__ = "1.0.1"
 __author__ = "Benjamin Blundell <bjb8@st-andrews.ac.uk>"
 
 

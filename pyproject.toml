@@ -1,7 +1,7 @@
 [project]
 name = "pytritech"
 description = "A Python interface to Tritech Gemini Sonar files."
-version = "1.0.0"
+version = "1.0.1"
 authors = [
     { name = "Benjamin James Blundell", email = "me@benjamin.computer" }
 ]

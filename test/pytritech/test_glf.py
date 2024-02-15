@@ -7,6 +7,7 @@ from PIL import Image, ImageChops
 from pytritech.glf import GLF
 from pytritech.util.time import EpochGem
 from pyinstrument import Profiler
+from src.pytritech.util.range import calculate_range
 
 def test_glf(get_data):
     """ Basic tests on the GLF files: read a glf and extract a PIL image."""
@@ -43,6 +44,13 @@ def test_glf(get_data):
         test_image = os.path.join(get_data, "result.png")
         test_image = Image.open(test_image)
         diff = ImageChops.difference(image, test_image)
+
+        #import xml.etree.ElementTree as ET
+        #import xml.dom.minidom as md
+        #dom = md.parseString(ET.tostring(glf.config))
+        #print(dom.toprettyxml())
+        print(calculate_range(glf.images[20]))
+
 
         if diff.getbbox():
             assert(False)

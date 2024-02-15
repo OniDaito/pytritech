@@ -7,14 +7,13 @@ This module contains the following:
 """
 
 __all__ = ["ImageRecord"]
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "Benjamin Blundell <me@benjamin.computer>"
 
 import datetime
 import struct
 import pytz
 from pytritech.util.time import EpochGem
-
 
 class ImageRecord:
     """The main image record from the sonar. This starts with a record
