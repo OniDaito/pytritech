@@ -2,7 +2,7 @@
 
 import os
 from pytritech.glf import GLF
-from src.pytritech.util.range import calculate_range
+from pytritech.util.range import calculate_range
 
 def test_range(get_data):
     """ Basic tests on the GLF files: read a glf and extract a PIL image."""

@@ -65,10 +65,11 @@ class GLF:
 
         # Set some useful parameters on the GLF class such as sonar_id and range
         # TODO - it turns out that the range text doesn't always exist and there may be multiple ones
-        self.sonar_ids = []
+        #self.sonar_ids = []
 
-        for sonar_node in root.find("GuiCurrentSettings/devices"):
-            self.sonar_ids.append(int(sonar_node.find("id").text))
+        # This method appears not to work
+        #for sonar_node in root.find("GuiCurrentSettings/devices"):
+        #    self.sonar_ids.append(int(sonar_node.find("id").text))
 
     
     def __enter__(self):
@@ -118,6 +119,7 @@ class GLF:
     def _parse_dat(self):
         """Read the dat file stored inside the glf which uses Zip."""
         self.images = []
+        self.sonar_ids = []
         self.dat = self._f.read()
         file_offset = 0
 
@@ -132,6 +134,13 @@ class GLF:
                 image_rec = ImageRecord(header, self.dat, file_offset)
                 self.images.append(image_rec)
                 file_offset += len(image_rec)
+
+                # Add sonar IDs here as we find them. Seems the best way.
+                sonar_id = image_rec.header.device_id
+
+                if sonar_id not in self.sonar_ids:
+                    self.sonar_ids.append(sonar_id)
+
             elif header.type == 1:
                 # V4 protocol
                 assert False

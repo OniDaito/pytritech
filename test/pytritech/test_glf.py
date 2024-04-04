@@ -7,7 +7,7 @@ from PIL import Image, ImageChops
 from pytritech.glf import GLF
 from pytritech.util.time import EpochGem
 from pyinstrument import Profiler
-from src.pytritech.util.range import calculate_range
+from pytritech.util.range import calculate_range
 
 def test_glf(get_data):
     """ Basic tests on the GLF files: read a glf and extract a PIL image."""
@@ -24,6 +24,7 @@ def test_glf(get_data):
         end_date  = glf.images[-1].header.time
 
         assert(glf.images[0].header.device_id == 1194)
+        assert(glf.sonar_ids[0] == 1194)
 
         assert start_date.hour == 16
         assert start_date.minute == 10

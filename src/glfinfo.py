@@ -44,6 +44,6 @@ if __name__ == "__main__":
         start_date = glf.images[0].header.time
         end_date = glf.images[-1].header.time
         print("Date range:", start_date, "->", end_date)
-        print("Sonar ID:", glf.sonar_id)
+        print("Sonar IDs:", glf.sonar_ids)
         nice = indent(glf.config)
         print(ElementTree.dump(nice))
