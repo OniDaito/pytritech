@@ -47,3 +47,8 @@ if __name__ == "__main__":
         print("Sonar IDs:", glf.sonar_ids)
         nice = indent(glf.config)
         print(ElementTree.dump(nice))
+        image_data, image_size = glf.extract_image(glf.images[0])
+        print("Image Size", image_size)
+
+ 
+
